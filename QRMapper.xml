@@ -1,0 +1,28 @@
+<mapper namespace="com.mydatabase.questRule.mapper.QRMapper">
+    <configuration>
+        <insert id="insertQuestRule" parameterType="com.mydatabase.questRule.model.QuestRule">
+            INSERT INTO quest_rule (id, event_code, name, status, created_date, created_by, updated_date, updated_by)
+            VALUES (#{id}, #{eventCode}, #{name}, #{status}, NOW(), #{createdBy}, NOW(), #{updatedBy})
+        </insert>
+        <delete id="deleteQuestRuleById" parameterType="java.lang.String">
+            DELETE FROM quest_rule WHERE id = #{id}
+        </delete>
+        <select id="selectQuestRuleById" parameterType="java.lang.String" resultType="com.mydatabase.questRule.model.QuestRule">
+            SELECT id, event_code, name, status
+            FROM quest_rule
+            WHERE id = #{id}
+        </select>
+        <update id="updateQuestRuleStatus" parameterType="java.util.Map">
+            UPDATE quest_rule
+            SET status = #{status}, updated_date = NOW(), updated_by = #{updatedBy}
+            WHERE id = #{id}
+        </update>
+        <select id="selectAllQuestRules" resultType="com.mydatabase.questRule.model.QuestRule">
+            SELECT id, event_code, name, status
+            FROM quest_rule
+        </select>
+        <select id="getQuestRuleListByStatus" parameterType="int" resultType="com.mydatabase.questRule.model.QuestRule">
+            SELECT * FROM quest_rule WHERE status = #{status}
+        </select>
+    </configuration>
+</mapper>

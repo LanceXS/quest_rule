@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mydatabase.mapper.AwardMapper">
+    <insert id="insertAward" parameterType="com.mydatabase.model.Award">
+        INSERT INTO award (id, user_id, award_rule_id, amount, award_type, created_date, created_by, updated_date, updated_by)
+        VALUES (#{id}, #{userId}, #{awardRuleId}, #{amount}, #{awardType}, #{createdDate}, #{createdBy}, #{updatedDate}, #{updatedBy})
+    </insert>
+</mapper>
