@@ -15,4 +15,6 @@ public interface AwardRuleMapper {
     AwardRule findAwardRuleById(String id);
     @Select("SELECT * FROM award_rule")
     List<AwardRule> findAllAwardRules();
+    @Select("SELECT * FROM quest_rule_instance WHERE user_id = #{userId}")
+    List<AwardRule> getAwardRuleListByUserId(String userId);
 }

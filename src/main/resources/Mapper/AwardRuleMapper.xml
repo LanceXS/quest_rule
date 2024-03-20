@@ -5,4 +5,7 @@
         INSERT INTO award_rule (id, quest_rule_id, amount, award_type, status, created_date, created_by, updated_date, updated_by)
         VALUES (#{id}, #{questRuleId}, #{amount}, #{awardType}, #{status}, #{createdDate}, #{createdBy}, #{updatedDate}, #{updatedBy})
     </insert>
+    <select id="getAwardRuleListByUserId" resultType="com.mydatabase.awardrule.model.AwardRule">
+        SELECT * FROM award_rule WHERE user_id = #{userId}
+    </select>
 </mapper>

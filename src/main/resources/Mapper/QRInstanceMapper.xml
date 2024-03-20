@@ -6,19 +6,19 @@
         VALUES (#{userId}, #{questRuleId}, #{status}, NOW(), #{createdBy}, NOW(), #{updatedBy})
     </insert>
 
-    <delete id="deleteQuestRuleInstanceById">
+    <delete id="deleteQuestRuleInstanceById" parameterType="java.lang.String">
         DELETE FROM quest_rule_instance WHERE id = #{id}
     </delete>
 
-    <update id="updateQuestRuleInstanceStatus">
+    <update id="updateQuestRuleInstanceStatus" parameterType="com.mydatabase.questRuleInstance.model.QuestRuleInstance">
         UPDATE quest_rule_instance SET status = #{status} WHERE id = #{id}
     </update>
 
-    <select id="getQuestRuleInstanceListByUserId" resultType="com.mydatabase.questRuleInstance.model.QuestRuleInstance">
+    <select id="getQuestRuleInstanceListByUserId" parameterType="java.lang.String" resultType="com.mydatabase.questRuleInstance.model.QuestRuleInstance">
         SELECT * FROM quest_rule_instance WHERE user_id = #{userId}
     </select>
 
-    <select id="getQuestRuleStatusById" resultType="int">
+    <select id="getQuestRuleStatusById" parameterType="java.lang.String" resultType="int">
         SELECT status FROM quest_rule_instance WHERE quest_rule_id = #{questRuleId}
     </select>
 </mapper>
