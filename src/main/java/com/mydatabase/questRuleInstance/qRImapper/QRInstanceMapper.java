@@ -15,4 +15,7 @@ public interface QRInstanceMapper {
     List<QuestRuleInstance> getQuestRuleInstanceListByUserId(String userId);
     @Select("SELECT status FROM quest_rule_instance WHERE quest_rule_id = #{questRuleId}")
     int getQuestRuleStatusById(String questRuleId);
+
+    @Select("SELECT * FROM quest_rule_instance WHERE user_id = #{userId}")
+    List<QuestRuleInstance> getQuestRuleInstancesByUserIdforDAO(@Param("userId") String userId);
 }

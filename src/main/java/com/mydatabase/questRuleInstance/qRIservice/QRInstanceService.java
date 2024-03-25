@@ -70,4 +70,11 @@ public class QRInstanceService {
     private List<QuestRuleInstance> fetchQuestRuleInstances(String userId) {
         return qrInstanceMapper.getQuestRuleInstanceListByUserId(userId);
     }
+
+    //The follow is for solving the problem of database performance, implement the sub-database sub-table
+    @Autowired
+    private QRInstanceMapper questRuleInstanceMapperforDAO;
+    public List<QuestRuleInstance> getQuestRuleInstancesByUserId(String userId) {
+        return questRuleInstanceMapperforDAO.getQuestRuleInstancesByUserIdforDAO(userId);
+    }
 }
